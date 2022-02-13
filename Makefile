@@ -1,8 +1,5 @@
-src = $(wildcard *.c)
-obj = $(src:.c=.o)
-
-httpServer: $(obj)
-	gcc -g -Wall -o $@ $^
+httpServer:
+	gcc httpServer.c -g -Wall -o httpServer
 
 clean:
-	rm -f $(obj) httpServer
+	rm -f httpServer
