@@ -16,6 +16,9 @@ int main(int argc, char *argv[]){
 	char *ico_header = "HTTP/1.1 200 OK\r\n"
 					   "Content-Type: image/x-icon\r\n\r\n";
 
+	char* html_header = "HTTP/1.1 200 OK\r\n"
+						"Content-Type: text/html\r\n\r\n";
+
 	int command_port;
 	// GETTING PORT_NUM FROM COMMAND LINE ARGUMENT
 	switch(argc){
@@ -128,11 +131,13 @@ int main(int argc, char *argv[]){
 			//send(client_socket, message, strlen(message), 0);
 			if(strcmp(action, "GET") != 0){
 				htmlFile = open("400error.html", O_RDONLY);
+				send(client_socket, html_header, strlen(html_header), 0);
 				sendfile(client_socket, htmlFile, NULL, 1024);
 				printf("\t[+] SENT: 400error.html\n");
 			}
 			else if(strcmp(path, "/") == 0 || strcmp(path, "/index.html") == 0){
 				htmlFile = open("index.html", O_RDONLY);
+				send(client_socket, html_header, strlen(html_header), 0);
 				sendfile(client_socket, htmlFile, NULL, 1024);
 				printf("\t[+] SENT: index.html\n");
 			}
@@ -144,6 +149,7 @@ int main(int argc, char *argv[]){
 			}
 			else if(strcmp(path, "/bearded_bot.html") == 0){
 				htmlFile = open("bearded_bot.html", O_RDONLY);
+				send(client_socket, html_header, strlen(html_header), 0);
 				sendfile(client_socket, htmlFile, NULL, 1024);
 				printf("\t[+] SENT: bearded_bot.html\n");
 			}
@@ -155,6 +161,7 @@ int main(int argc, char *argv[]){
 			}
 			else{
 				htmlFile = open("404error.html", O_RDONLY);
+				send(client_socket, html_header, strlen(html_header), 0);
 				sendfile(client_socket, htmlFile, NULL, 1024);
 				printf("\t[+] SENT: 404error.html\n");
 			}
