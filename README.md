@@ -1,9 +1,8 @@
 # httpServer
-simple http web server for SN2 project1
+simple http web server
 
 NOTE: Run program on a Linux system. This project will compile on
-the SSH server. HOWEVER YOU WILL NOT BE ABLE TO CONNECT VIA A BROWSER 
-if using the SSH server at UWF!
+the SSH server.
 
 COMPILATION:
 To compile, ensure all files are in the same directory and type
